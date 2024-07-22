@@ -41,6 +41,18 @@ services:
     ports:
       - "80:80"
 
+  vproelastic:
+    image: elasticsearch:7.5.2
+    container_name: vproelastic
+    environment:
+      - node.name=vprofilenode
+      - cluster.name=vprofile
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
 volumes:
    vprodbdata: {}
    vproappdata: {}
